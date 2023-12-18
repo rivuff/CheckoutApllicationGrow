@@ -1,4 +1,4 @@
-# NeextJS Checkout Application
+# NextJS Checkout Application
 
 ## Table of Contents
 
