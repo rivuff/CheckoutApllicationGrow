@@ -1,11 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-### NextJS Chckout Application 
-
-## Overview
-The React Checkout Application is a dynamic e-commerce checkout system built using React, Next.js, and Tailwind CSS. It uses Zustand for state management It features a responsive design, cart management, payment method selection, and an order confirmation page.
-
-# React Checkout Application
+# NeextJS Checkout Application
 
 ## Table of Contents
 
@@ -22,7 +15,7 @@ The React Checkout Application is a dynamic e-commerce checkout system built usi
 
 ## Introduction
 
-This React Checkout Application provides a simple and user-friendly interface for users to review their selected items, make payments, and view order summaries. It is built with a focus on modularity, responsiveness, and state management using Zustand.
+The NextJS Checkout Application is a dynamic e-commerce checkout system built using React, Next.js, and Tailwind CSS. It uses Zustand for state management. It features a responsive design, cart management, payment method selection, and an order confirmation page.
 
 ## Project Structure
 
@@ -33,13 +26,18 @@ The project is structured as follows:
 - `README.md`: Comprehensive documentation for the project.
 - `package.json`: Configuration file for Node.js dependencies.
 - `public/images/`: Directory for storing images used in the application.
-- `src/`: Source code directory.
-  - `components/`: Reusable React components.
-  - `pages/`: React components that serve as pages in the application.
-  - `providers/`: Context providers for state management.
+- `app/`: Source code directory.
+  - `(site)/`  
+    - `components/`: Reusable React components.
+    - `page.tsx`: React components that serve as pages in the application.
+  - `API/`: fetching APIs for theme and cart for Integration.
+  - `Confirmation`: Confirmation page building.
+  - `Payment`: Payment page building.
+  - `global.css`: For adding global css.
+  - `layout.tsx`: entry point of the application
+  - `public/`: Directory for storing images used in the application.
   - `store/`: Zustand store for managing application state.
   - `styles/`: Stylesheets, including Tailwind CSS.
-  - `utils/`: Utility functions or helper files.
 - `.babelrc`: Configuration for Babel, a JavaScript compiler.
 - `next.config.js`: Configuration file for Next.js.
 - `tsconfig.json`: TypeScript configuration.
@@ -61,38 +59,47 @@ The project is structured as follows:
 
 ## State Management with Zustand
 
-Zustand is used for state management in the application. The `useCartStore` store provides state management for cart-related data, such as products, payment methods, and the total amount.
+Zustand is used for state management in the application. The useCartStore hook creates a store with state properties like products, paymentMethods, and totalAmount. The setCart function updates the state based on incoming data, ensuring a reactive user interface. Zustand's simplicity and efficiency make it ideal for managing global state in a React application.
 
-Example of using `useCartStore`:
+Example of Zustand usage :
 
 ```tsx
-import useCartStore from '@/store/cartStore';
-
-const { products, totalAmount, setCart } = useCartStore();
-// Access and manipulate state properties...
+const useCartStore = create<CartStore>((set) => ({
+  products: [],
+  paymentMethods: [],
+  totalAmount: 0,
+  setCart: (data) => {
+    // Update state logic
+    set({ ...data, totalAmount: newTotalAmount });
+  },
+  // ...other state management functions
+}));
 ```
+
 ## Dynamic Theme System
 
-The application features a dynamic theme system using CSS variables. Themes can be customized dynamically by updating the theme object within the state. The applyStyles function is responsible for applying the styles based on the theme.
+The application dynamically fetches brand metadata, including theme colors, from an external API. The theme is then applied to the user interface using CSS variables. The applyStyles function updates the root element's styles based on the fetched theme, providing a unique and branded appearance.
 
-Example of updating the theme:
+Example of dynamic theming:
 
 ```tsx
-const [theme, setTheme] = useState({
- "--background": "",
- "--foreground": "",
- "--primary": "",
- "--primary-foreground": ""
-});
-
-// Modify the theme object...
-setTheme({
- "--background": "#ffffff",
- "--foreground": "#000000",
- "--primary": "#00ff00",
- "--primary-foreground": "#ffffff"
-});
+const applyStyles = () => {
+  const root = document.documentElement;
+  for (const [property, value] of Object.entries(theme)) {
+    // Apply styles based on theme properties
+    root.style.setProperty(property, value);
+  }
+};
 ```
+
+Example of applying styles when the theme changes:
+
+```tsx
+useEffect(() => {
+  applyStyles();
+}, [theme]);
+```
+
 ## Responsive Design
 The application is designed to be responsive across various screen sizes. It uses Tailwind CSS for styling and provides a seamless experience on both desktop and mobile devices.
 
@@ -119,17 +126,9 @@ useEffect(() => {
 }, [setCart]);
 ```
 
+## Follow the installation instructions 
+in the repository to set up the application locally. After installation, run the application using npm run dev and access it at http://localhost:3000.
 
+## Conclusion
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
+The NextJS Checkout Application provides a flexible foundation for building a robust e-commerce checkout experience. Leverage Zustand for state management, dynamic theming for a personalized look, and ensure responsiveness for a seamless user experience. Feel free to extend and customize the application based on specific requirements.
