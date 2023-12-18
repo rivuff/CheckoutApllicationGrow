@@ -51,7 +51,7 @@ The project is structured as follows:
 
 ## Getting Started
 
-1. Clone the repository: `git clone <repository-url>`
+1. Clone the repository: `git clone https://github.com/rivuff/CheckoutApllicationGrow`
 2. Install dependencies: `npm install`
 3. Run the development server: `npm run dev`
 4. Open the application in your browser: [http://localhost:3000](http://localhost:3000)
