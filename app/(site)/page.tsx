@@ -18,7 +18,7 @@ export default function Home() {
 
   //if(typeof window !== 'undefined'){
 
-  var root: HTMLElement;
+  let root: HTMLElement;
   if(typeof window !== 'undefined'){
     root = document.documentElement;
   }
