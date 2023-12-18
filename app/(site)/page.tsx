@@ -5,10 +5,8 @@ import useCartStore from '@/store/cartStore'
 import { fetchOrderDetails } from '../api/orderDetails'
 import CartItem from './components/CartItem'
 import CartSummaryBox from './components/CartSummaryBox'
-import {RxCaretLeft} from "react-icons/rx"
 import AddressInfo from './components/AddressInfo'
 import { useRouter } from 'next/navigation'
-import { useBrand } from '@/providers/BrandContext'
 import { fetchthemeDetails } from '../api/themedetals'
 
 
@@ -19,7 +17,10 @@ interface Brand {
 
 export default function Home() {
 
-  const root = document.documentElement;
+  if (typeof document !== 'undefined'){
+    const root = document.documentElement;
+  
+  
   
   const [theme, setTheme] = useState({
     "--background": "",
@@ -105,7 +106,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (typeof document !== 'undefined') {
       const val = document.documentElement.style;
+      
       console.log("val",val);
       
       try {
@@ -120,9 +123,10 @@ export default function Home() {
         setLoading(false);
       }
     };
-
+  }
     fetchData();
-  }, [setCart]);
+ // }
+  }, []);
 
   totalAmount.toFixed(2); 
   
@@ -205,5 +209,6 @@ export default function Home() {
     </div>
   );
   
+  }
 
 }

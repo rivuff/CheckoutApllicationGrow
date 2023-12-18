@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
-import { BrandProvider } from '@/providers/BrandContext'
+//import { BrandProvider } from '@/providers/BrandContext'
 import './globals.css'
 
 const font = Figtree({ subsets: ['latin'] })
@@ -19,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={font.className}>
-        <BrandProvider>
           {children}
-        </BrandProvider>
       </body>
       
     </html>
