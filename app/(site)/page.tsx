@@ -9,18 +9,20 @@ import AddressInfo from './components/AddressInfo'
 import { useRouter } from 'next/navigation'
 import { fetchthemeDetails } from '../api/themedetals'
 
-
 interface Brand {
   merchantName: string;
   merchantLogo: string;
 }
 
-export default function Home() {
+export default function Home() {  
 
-  if (typeof document !== 'undefined'){
-    const root = document.documentElement;
-  
-  
+  //if(typeof window !== 'undefined'){
+
+  var root: HTMLElement;
+  if(typeof window !== 'undefined'){
+    root = document.documentElement;
+  }
+   
   
   const [theme, setTheme] = useState({
     "--background": "",
@@ -69,79 +71,79 @@ export default function Home() {
     fetchBrand();
   }, []); // Empty dependency array means this effect runs once on mount
   
-  const applyStyles = () => {
-    
-  
-    // Loop through the theme properties and set CSS variables
-    for (const [property, value] of Object.entries(theme)) {
-      if(property == '--primary'){
-        //root.style.setProperty('backgroundColor', value);
-        root.style.backgroundColor = value;
+      const applyStyles = () => {
         
-      }else if (property == '--primary-foreground'){
-        root.style.setProperty('color', value);
-        //root.style.color = value;
-      }
-      else if (property == '--background'){
-        root.style.setProperty('--background', value)
-      }
-      else if (property == '--foreground'){
-        root.style.setProperty('--foreground', value)
-      }
       
-      console.log(property, value);
+        // Loop through the theme properties and set CSS variables
+        for (const [property, value] of Object.entries(theme)) {
+          if(property == '--primary'){
+            //root.style.setProperty('backgroundColor', value);
+            root.style.backgroundColor = value;
+            
+          }else if (property == '--primary-foreground'){
+            root.style.setProperty('color', value);
+            //root.style.color = value;
+          }
+          else if (property == '--background'){
+            root.style.setProperty('--background', value)
+          }
+          else if (property == '--foreground'){
+            root.style.setProperty('--foreground', value)
+          }
+          
+          console.log(property, value);
+          
+        }
+      };
       
-    }
-  };
-  
-  useEffect(() => {
-    // Apply styles whenever the theme changes
-    applyStyles();
-  }, [theme]);
-  
-  //const brand = useBrand();
-  const handlePaymentClick = () => {
-    router.push('/Payemnt')
-  };
+      useEffect(() => {
+        // Apply styles whenever the theme changes
+        applyStyles();
+      }, [theme]);
+      
+      //const brand = useBrand();
+      const handlePaymentClick = () => {
+        router.push('/Payemnt')
+      };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (typeof document !== 'undefined') {
-      const val = document.documentElement.style;
-      
-      console.log("val",val);
-      
-      try {
-        const response = await fetchOrderDetails();
-        
-        console.log(totalAmount);
-        setCart(response);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setCart({ products: [], paymentMethods: [], totalAmount: 0 });
-      } finally {
-        setLoading(false);
+      useEffect(() => {
+        const fetchData = async () => {
+          if (typeof document !== 'undefined') {
+          const val = document.documentElement.style;
+          
+          console.log("val",val);
+          
+          try {
+            const response = await fetchOrderDetails();
+            
+            console.log(totalAmount);
+            setCart(response);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            setCart({ products: [], paymentMethods: [], totalAmount: 0 });
+          } finally {
+            setLoading(false);
+          }
+        };
       }
-    };
-  }
-    fetchData();
- // }
-  }, []);
+        fetchData();
+    // }
+      }, []);
 
-  totalAmount.toFixed(2); 
-  
-  
-  const deliveryFees = 10;
-  const discount = -5;
-  const priceAmount = totalAmount - 5;
+      totalAmount.toFixed(2); 
+      
+      
+      const deliveryFees = 10;
+      const discount = -5;
+      const priceAmount = totalAmount - 5;
 
-  totalAmount.toFixed(2);
-  priceAmount.toFixed(2);
-  console.log(brand);
+      totalAmount.toFixed(2);
+      priceAmount.toFixed(2);
+      console.log(brand);
   
  
   
-
+    
 
   return (
     <div className="container mx-auto p-4 m-4 mb-8">
@@ -161,7 +163,7 @@ export default function Home() {
   
       {loading ? (
         <div className="bg-gray-300 p-4 rounded-md">
-          {root.style.backgroundColor = theme['--foreground']}
+          {/* {root.style.backgroundColor = theme['--foreground']} */}
           <p>Loading...</p>
         </div>
       ) : (
@@ -208,7 +210,8 @@ export default function Home() {
       )}
     </div>
   );
+
+ // }
   
-  }
 
 }
