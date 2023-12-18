@@ -35,7 +35,7 @@ const CartItem: React.FC<CartItemProps> = ({ product }) =>{
           <button onClick={handleIncrement} className="ml-2 rounded-full  px-3 py-1 transition-transform transform hover:scale-110  text-white bg-gray-600">+</button>
        </div>
       <p className='pt-7 m-4 w-10'>${product.price.toFixed(2)}</p>
-      
+
   </div>
   );
 } 

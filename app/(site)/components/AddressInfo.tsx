@@ -6,7 +6,7 @@ import { BiPhone, BiMapPin } from 'react-icons/bi';
 const AddressInfo: React.FC = () => (
 
   <div>
-    <h1 className='font-bold ml-4 text-2xl m-4'>Delivary Details</h1>
+    <h1 className='font-bold ml-4 text-2xl m-4'>Delivery Details</h1>
   <div className="">
     <div className="flex items-center w-80 m-4 bg-gray-300 p-4 rounded-md mb-2">
       <BiMapPin className="text-gray-500 mr-2" />
