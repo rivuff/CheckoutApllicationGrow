@@ -10,8 +10,7 @@
 6. [Dynamic Theme System](#dynamic-theme-system)
 7. [Responsive Design](#responsive-design)
 8. [API Integration](#api-integration)
-9. [Contributing](#contributing)
-10. [License](#license)
+9. [Conclusion](#Conclusion)
 
 ## Introduction
 
@@ -125,9 +124,6 @@ useEffect(() => {
  fetchData();
 }, [setCart]);
 ```
-
-## Follow the installation instructions 
-in the repository to set up the application locally. After installation, run the application using npm run dev and access it at http://localhost:3000.
 
 ## Conclusion
 
