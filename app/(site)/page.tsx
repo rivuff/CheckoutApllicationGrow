@@ -151,7 +151,7 @@ export default function Home() {
       <div className='flex flex-col sm:flex-row p-2 justify-between bg-gray-300 rounded-md items-center'>
         <div className='ml-4 mb-2 sm:mb-0 flex flex-row items-center'>
           {brand && (
-            <img className='w-10 h-10 rounded-full' src={brand.merchantLogo} alt={brand.merchantName} />
+            <img className='w-auto h-10 rounded-full' src={brand.merchantLogo} alt={brand.merchantName} />
           )}
           {brand && <div className='ml-2 font-semibold'>{brand.merchantName}</div>}
         </div>
