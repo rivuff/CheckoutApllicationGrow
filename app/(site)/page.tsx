@@ -146,18 +146,18 @@ export default function Home() {
     
 
   return (
-    <div className="container mx-auto p-4 m-4 mb-8">
+    <div className="container mx-auto p-4 m-4 mb-8 header-section">
   
       <div className='flex flex-col sm:flex-row p-2 justify-between bg-gray-300 rounded-md items-center'>
         <div className='ml-4 mb-2 sm:mb-0 flex flex-row items-center'>
           {brand && (
-            <img className='w-auto h-auto rounded-full' src={brand.merchantLogo} alt={brand.merchantName} />
+            <img className='w-10 h-10 rounded-full' src={brand.merchantLogo} alt={brand.merchantName} />
           )}
           {brand && <div className='ml-2 font-semibold'>{brand.merchantName}</div>}
         </div>
         <h1 className="text-3xl font-semibold justify-center mb-4 sm:mb-0 pt-2 sm:pt-0">Checkout</h1>
         <div></div>
-      </div>
+    </div>
   
       <AddressInfo />
   
@@ -175,7 +175,7 @@ export default function Home() {
           ) : (
             <>
               <h2 className="font-bold ml-4 text-2xl m-4 mt-8">Order List</h2>
-              <div className="grid gap-4">
+              <div className="grid gap-4 product-list">
                 {products.map((product) => (
                   <CartItem key={product.id} product={product} />
                 ))}
