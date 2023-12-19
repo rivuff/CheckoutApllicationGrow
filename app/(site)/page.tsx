@@ -49,7 +49,7 @@ export default function Home() {
         console.log("data",data);
         console.log(data.theme["--background"]);
         
-        // Update brand state
+      
         setBrand({ merchantName: data.merchantName, merchantLogo: data.merchantLogo });
   
           setTheme({
@@ -69,12 +69,12 @@ export default function Home() {
     };
   
     fetchBrand();
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []); 
   
       const applyStyles = () => {
         
       
-        // Loop through the theme properties and set CSS variables
+       
         for (const [property, value] of Object.entries(theme)) {
           if(property == '--primary'){
             //root.style.setProperty('backgroundColor', value);
@@ -97,11 +97,11 @@ export default function Home() {
       };
       
       useEffect(() => {
-        // Apply styles whenever the theme changes
+       
         applyStyles();
       }, [theme]);
       
-      //const brand = useBrand();
+      
       const handlePaymentClick = () => {
         router.push('/Payemnt')
       };
