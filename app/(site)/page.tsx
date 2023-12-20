@@ -149,7 +149,7 @@ export default function Home() {
     <div className="container mx-auto p-4 m-4 mb-8 header-section">
   
       <div className='flex flex-col sm:flex-row p-2 justify-between bg-gray-300 rounded-md items-center'>
-        <div className='ml-4 mb-2 sm:mb-0 flex flex-row items-center'>
+        <div className='ml-4 mb-2 sm:mb-0 flex flex-wrap flex-row items-center'>
           {brand && (
             <img className='w-10 h-10 rounded-full max-w-full' src={brand.merchantLogo} alt={brand.merchantName} />
           )}
